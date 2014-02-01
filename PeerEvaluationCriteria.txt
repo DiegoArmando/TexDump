@@ -1,0 +1,32 @@
+Timeliness of task completion
+Did the team member submit materials to the team by the deadlines agreed upon within the team, or did the team member miss some/all deadlines and hold up progress for the rest of the team? 
+Score
+
+25 - always delivered all materials well in advance of deadlines 
+20 - always met deadlines 
+10 - usually submitted materials on time; but one was late, but with only a minor impact on team progress 
+5 - usually submitted materials on time; but one was very late or really held up team progress 
+0 - consistently late; never submitted material on time to the team 
+
+Team cooperation
+Did the team member actively participate in team discussions, and try to help the team reach consensus, or did the team member actively fight the other team members (preventing consensus from being reached)? 
+Score
+
+Description
+25 - team member actively strived to get all members to participate, ensured everyone had a voice, made sure meetings ran smoothly and stayed on topic. 
+20 - team member participated, and was able to reach an agreement with the other team members in a reasonable period of time 
+10 - team member participated sometimes in group meetings, but did not take an active role 
+0 - team member had no cooperation; sat silent in meetings or always fought with other team members 
+0 - team member is Donald Duck and always shouted in a voice that nobody could understand 
+
+Breadth of experience
+Did the team member actively participate in all areas of the team's project, or did he/she try to specialize in one area? 
+Score
+
+
+Description
+25 - team member was very active in all areas of the project, and lent an extra hand without needing to be asked to 
+20 - team member took an active interest in all areas of the project and offered to help out when possible 
+10 - team member mainly specialized in one area of the project, but did help out on one or two other areas when asked 
+0 - team member specialized in one area and flat out refused to work on other areas of the project when requested to do so 
+0 - team member was a micro manager who took over the project and did everything him/herself
