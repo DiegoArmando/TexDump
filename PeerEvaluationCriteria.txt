@@ -30,3 +30,14 @@ Description
 10 - team member mainly specialized in one area of the project, but did help out on one or two other areas when asked 
 0 - team member specialized in one area and flat out refused to work on other areas of the project when requested to do so 
 0 - team member was a micro manager who took over the project and did everything him/herself
+
+Team Communication
+Did the team member actively participate in discussions, timely response to emails and other communications?   
+Score
+
+
+Description
+25 - team member always responds to communications within a timely manner
+20 - team member frequently responds to communications within a timely manner 
+10 - team member frequently never responds; occasionally responds in a timely manner 
+0 - team member never participates in discussions, never responds to emails or other types of communications 
