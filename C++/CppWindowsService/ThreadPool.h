@@ -41,35 +41,28 @@
 #pragma once
 
 #include <memory>
+#include <utility>
 
 
-class CThreadPool
-{
-public:
-
+class CThreadPool {
+ public:
     template <typename T>
-    static void QueueUserWorkItem(void (T::*function)(void), 
-        T *object, ULONG flags = WT_EXECUTELONGFUNCTION)
-    {
+    static void QueueUserWorkItem(void (T::*function)(void),
+        T *object, ULONG flags = WT_EXECUTELONGFUNCTION) {
         typedef std::pair<void (T::*)(), T *> CallbackType;
         std::auto_ptr<CallbackType> p(new CallbackType(function, object));
 
-        if (::QueueUserWorkItem(ThreadProc<T>, p.get(), flags))
-        {
+        if (::QueueUserWorkItem(ThreadProc<T>, p.get(), flags)) {
             // The ThreadProc now has the responsibility of deleting the pair.
             p.release();
-        }
-        else
-        {
+        } else {
             throw GetLastError();
         }
     }
 
-private:
-
+ private:
     template <typename T>
-    static DWORD WINAPI ThreadProc(PVOID context)
-    {
+    static DWORD WINAPI ThreadProc(PVOID context) {
         typedef std::pair<void (T::*)(), T *> CallbackType;
 
         std::auto_ptr<CallbackType> p(static_cast<CallbackType *>(context));
