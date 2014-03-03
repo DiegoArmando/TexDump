@@ -24,6 +24,7 @@ int main()
 		printf("WSAStartup failed: %d\n", iResult);
 		return 1;
 	}
+
 	struct addrinfo *result = NULL,
 		hints;
 
