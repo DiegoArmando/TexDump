@@ -9,8 +9,7 @@ box, and closes with a right click*/
 #define WM_ICON (WM_USER+1)
 const char window_class_name[] = "myWindowClass";
 
-/*defines behavior for messages
-if this method returns 0, the program will exit the message loop and end*/
+/*defines behavior for messages*/
 LRESULT CALLBACK WindowProcedure(HWND window_handle, UINT message, WPARAM wParam, LPARAM lParam){
   switch (message){
     case WM_ICON: /*if it was an event on our icon*/
@@ -82,6 +81,7 @@ int WINAPI WinMain(HINSTANCE handle_instance, HINSTANCE handle_previous_instance
 
   NOTIFYICONDATA icon_data;
 
+  /*sets the settings for our tray icon*/
   icon_data.cbSize = sizeof(icon_data);
   icon_data.hWnd = handle_window;
   icon_data.uID = 100;
@@ -91,6 +91,7 @@ int WINAPI WinMain(HINSTANCE handle_instance, HINSTANCE handle_previous_instance
   strcpy_s(icon_data.szTip, "TexDump");
   icon_data.uFlags = NIF_MESSAGE | NIF_ICON | NIF_TIP;
 
+  /*Method that actually creates the icon*/
   Shell_NotifyIcon(NIM_ADD, &icon_data);
 
   /*constantly checks for messages*/
