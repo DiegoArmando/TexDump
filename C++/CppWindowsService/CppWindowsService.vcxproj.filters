@@ -41,8 +41,24 @@
     <ClInclude Include="ThreadPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Documentation\ReadMe.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\TrayIconBase\TrayIconBase\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\TrayIconBase\TrayIconBase\icon2.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\TrayIconBase\TrayIconBase\Resource.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

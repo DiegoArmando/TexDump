@@ -20,6 +20,8 @@
 #pragma once
 
 #include "ServiceBase.h"
+#include <shellapi.h>
+#include  "resource.h"
 
 
 class CSampleService : public CServiceBase {
@@ -28,6 +30,7 @@ class CSampleService : public CServiceBase {
         BOOL fCanStop = TRUE,
         BOOL fCanShutdown = TRUE,
         BOOL fCanPauseContinue = FALSE);
+	BOOL Run(CServiceBase &service);
     virtual ~CSampleService(void);
 
  protected:

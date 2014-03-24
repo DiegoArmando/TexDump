@@ -46,6 +46,11 @@ CSampleService::~CSampleService(void) {
     }
 }
 
+BOOL CSampleService::Run(CServiceBase &service)
+{
+
+}
+
 
 //
 //   FUNCTION: CSampleService::OnStart(DWORD, LPWSTR *)
@@ -82,6 +87,9 @@ void CSampleService::OnStart(DWORD dwArgc, LPWSTR *lpszArgv) {
 }
 
 
+//void CSampleService::Run()
+
+
 //
 //   FUNCTION: CSampleService::ServiceWorkerThread(void)
 //
@@ -91,6 +99,9 @@ void CSampleService::OnStart(DWORD dwArgc, LPWSTR *lpszArgv) {
 void CSampleService::ServiceWorkerThread(void) {
     // Periodically check if the service is stopping.
     while (!m_fStopping) {
+
+
+
         // Perform main service function here...
 
         ::Sleep(2000);  // Simulate some lengthy operations.
