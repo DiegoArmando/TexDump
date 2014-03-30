@@ -1,0 +1,5 @@
+download the qt archive from https://mega.co.nz/#!m8wmkKSR!elAt3pmsZGNwRZUKPT1ydGrra3fPcgMXjeiuMTcxRWY
+extract the archive directly into C:
+The resulting filepath should be C:\Qt\qt5\qtbase\...
+extract QT_DLL archive into the C++\main\src folder
+run the project as normal
