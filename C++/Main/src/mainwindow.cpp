@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-// The MainWindow class is the main gui element, it handles all user interaction that is not related
-// to showing recieved messages.
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -16,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+//Sets up the verious menu actions
 void MainWindow::confingure_actions() {
 	
 	toggle_log_action = new QAction(tr("Log"), this);
@@ -24,7 +23,7 @@ void MainWindow::confingure_actions() {
 	connect(toggle_log_action, SIGNAL(toggled(bool)), this, SLOT(toggle_log(bool)));
 
 
-	//TO DO: right now niether of the below actions do any this, their functionaluty must still be implented.
+	//TO DO: right now niether of the below actions do any thing, their functionality must still be implented.
 	set_copy_close_action = new QAction(tr("Set Copy Close"),this);
 	ui->menuSettings->addAction(set_copy_close_action);
 

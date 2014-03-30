@@ -3,6 +3,7 @@
 
 #include <string>
 
+//This class is used to pass around message data
 class Message
 {
 public:

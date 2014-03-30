@@ -7,8 +7,7 @@
 #include <QTextstream>
 #include <QUrl>
 
-//Recives a message, the last message, timestamp, and sender variables are updated and attempts to log the
-//message
+//Recives a message, and attempts to log the message
 void Manager::receive_message(Message message) {
 	this->message = message;
 	this->log(message);
@@ -16,7 +15,7 @@ void Manager::receive_message(Message message) {
 	emit new_message_recived();
 }
 
-//Returns the last message recived by the manager along with the timestap, and sender
+//Returns the last message recived by the manager
 Message Manager::get_last_message() {
 	return message;
 
