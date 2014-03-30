@@ -5,6 +5,7 @@
 #include <QApplication>
 #include <QDesktopservices>
 #include <QFile>
+#include <QTextstream>
 #include <QUrl>
 
 //Recives a message, the last message, timestamp, and sender variables are updated and attempts to log the
@@ -46,7 +47,17 @@ void Manager::send_message(std::string message, std::string destination) {
 //Logs the message if log_messages is true
 void Manager::log(Message message) {
 
-	//TO DO: actually log the message
+	if (!get_log_message_boolean())
+		return;
+
+	QFile log(QString::fromStdString("log.txt"));
+	log.open(QIODevice::Append | QIODevice::Text);
+	QTextStream out(&log);
+
+	out << QString::fromStdString(message.timestamp_ + ": " + message.sender_ + "\n");
+	out << QString::fromStdString(message.text_ + "\n\n");
+
+	log.close();
 }
 
 //This fuction is run on the Application startup to load any user settings
