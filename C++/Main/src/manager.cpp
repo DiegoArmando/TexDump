@@ -1,5 +1,4 @@
 #include "manager.h"
-#include "new_message_event.h"
 #include <thread>
 #include <iostream>
 #include <QApplication>
@@ -14,7 +13,7 @@ void Manager::receive_message(Message message) {
 	this->message = message;
 	this->log(message);
 	
-	qApp->sendEvent(gui, new QEvent(new_message_event::new_message_type));
+	qApp->sendEvent(gui, new QEvent(MainWindow::new_message_type));
 	//TO DO: this meathod is not thread safe make it thread safe.
 }
 

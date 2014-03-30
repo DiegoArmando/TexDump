@@ -201,7 +201,6 @@
     <ClCompile Include="release\qrc_textdumpicons.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClInclude Include="new_message_event.h" />
     <ClInclude Include="ui_mainwindow.h" />
     <ClInclude Include="ui_multi_message_box.h" />
     <ClInclude Include="ui_single_message_box.h" />

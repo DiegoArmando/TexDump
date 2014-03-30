@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSystemTrayIcon>
+#include <QEvent>
 #include "manager.h"
 #include "single_message_box.h"
 #include "multi_message_box.h"
@@ -16,6 +17,9 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
+	static const QEvent::Type new_message_type = static_cast<QEvent::Type>(1000);
+
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 	bool event(QEvent* event);

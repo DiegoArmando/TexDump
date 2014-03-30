@@ -138,9 +138,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="new_message_event.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="message.h">
       <Filter>Header Files</Filter>
     </ClInclude>

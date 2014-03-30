@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "new_message_event.h"
 
 // The MainWindow class is the main gui element, it handles all user interaction that is not related
 // to showing recieved messages.
@@ -126,7 +125,7 @@ void MainWindow::quit_app() {
 
 //Recieves and processes the new message event;
 bool MainWindow::event(QEvent* event) {
-	if (event->type() == new_message_event::new_message_type) {
+	if (event->type() == MainWindow::new_message_type) {
 		message_counter++;
 	}	
 	return QMainWindow::event(event);
