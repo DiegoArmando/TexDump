@@ -16,15 +16,20 @@ SOURCES += main.cpp\
         mainwindow.cpp \
         single_message_box.cpp \
         multi_message_box.cpp \
-        manager.cpp
+        manager.cpp \
+		gui.cpp \
+		hot_key_listener.cpp
 
 HEADERS  += mainwindow.h \
             single_message_box.h \
             multi_message_box.h \
-            manager.h
+            manager.h \
+			gui.h \
+			message.h \
+			hot_key_listener.h
 
 FORMS    += mainwindow.ui \
             single_message_box.ui \
-    multi_message_box.ui
+			multi_message_box.ui
 
 RESOURCES += textdumpicons.qrc

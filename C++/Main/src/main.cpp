@@ -1,15 +1,17 @@
-#include "mainwindow.h"
 #include "manager.h"
 #include <QApplication>
+#include <thread>
+#include "gui.h"
 
 int main(int argc, char *argv[])
 {
 	Q_INIT_RESOURCE(textdumpicons);
 
 	QApplication qapp(argc, argv);
-	MainWindow window;
-	Manager::getInstance()->set_gui(&window);
+	Gui gui;
+	Manager::getInstance()->set_gui(&gui);
 	QApplication::setQuitOnLastWindowClosed(false);
+	
 	
 	return qapp.exec();
 }

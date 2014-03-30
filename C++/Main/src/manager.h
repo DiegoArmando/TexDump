@@ -2,14 +2,15 @@
 #define MANAGER_H
 
 #include <string>
-#include "mainwindow.h"
+#include <QObject>
 #include "message.h"
 
 // The manager is a singlton class that manages comunication between the client
 // and the GUI. It is also in charge of handling any user requests generated from the GUI
 // such as opening the log file, or closing the application.
-class Manager
+class Manager: public QObject
 {
+	Q_OBJECT
 
 public:
 
@@ -26,6 +27,9 @@ public:
 	bool get_log_message_boolean() { return log_messages; }
 	void set_log_message_boolean(bool log_messages) { this->log_messages = log_messages; }
 	void set_gui(QObject* object) { gui = object; }
+
+signals:
+	void new_message_recived();
 
 private:
 	QObject* gui;

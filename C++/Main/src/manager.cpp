@@ -13,8 +13,7 @@ void Manager::receive_message(Message message) {
 	this->message = message;
 	this->log(message);
 	
-	qApp->sendEvent(gui, new QEvent(MainWindow::new_message_type));
-	//TO DO: this meathod is not thread safe make it thread safe.
+	emit new_message_recived();
 }
 
 //Returns the last message recived by the manager along with the timestap, and sender
