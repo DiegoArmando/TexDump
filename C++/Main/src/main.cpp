@@ -12,6 +12,5 @@ int main(int argc, char *argv[])
 	Manager::getInstance()->set_gui(&gui);
 	QApplication::setQuitOnLastWindowClosed(false);
 	
-	
 	return qapp.exec();
 }

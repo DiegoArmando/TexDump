@@ -5,18 +5,23 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QEvent>
+#include <Qregexp>
 #include "single_message_box.h"
 #include "multi_message_box.h"
 #include "mainwindow.h"
 #include "message.h"
 
-
+//The Gui class manages all of the graphical elements of the program, it also 
+//passes on any user commands to the manager.
 class Gui : public QObject
 {
 	Q_OBJECT
 public:
 	Gui();
 	~Gui();
+
+	//This is the regual expression used to itedtify URLs in text
+	static const QRegExp url_regex;
 
 	private slots:
 	void new_message();
@@ -39,6 +44,5 @@ private:
 
 	void create_tray_icon();
 };
-
 #endif
 

@@ -2,6 +2,7 @@
 #include "manager.h"
 #include <QApplication>
 
+const QRegExp Gui::url_regex = QRegExp("((?:https?|ftp)://\\S+)");
 
 Gui::Gui()
 {
@@ -70,6 +71,7 @@ void Gui::tray_icon_clicked(QSystemTrayIcon::ActivationReason reason) {
 	}
 }
 
+//This function is called when the manager is informened that there is a new message
 void Gui::new_message() {
 	last_message = Manager::getInstance()->get_last_message();
 	message_counter++;
