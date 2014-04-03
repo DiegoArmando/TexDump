@@ -73,7 +73,7 @@ public:
         message_text_box->setGeometry(QRect(30, 110, 261, 121));
         destination_ip_text_box = new QLineEdit(centralWidget);
         destination_ip_text_box->setObjectName(QStringLiteral("destination_ip_text_box"));
-        destination_ip_text_box->setGeometry(QRect(110, 40, 251, 20));
+        destination_ip_text_box->setGeometry(QRect(135, 40, 251, 20));
         destination_ip_lable = new QLabel(centralWidget);
         destination_ip_lable->setObjectName(QStringLiteral("destination_ip_lable"));
         destination_ip_lable->setGeometry(QRect(10, 40, 121, 20));
@@ -101,7 +101,6 @@ public:
         send_button->setText(QApplication::translate("MainWindow", "Send", 0));
         log_button->setText(QApplication::translate("MainWindow", "Log", 0));
         your_ip_lable->setText(QApplication::translate("MainWindow", "Your IP: ???.???.???.???", 0));
-        destination_ip_text_box->setInputMask(QString());
         destination_ip_lable->setText(QApplication::translate("MainWindow", "Send messages to :", 0));
         menuSettings->setTitle(QApplication::translate("MainWindow", "Settings", 0));
     } // retranslateUi

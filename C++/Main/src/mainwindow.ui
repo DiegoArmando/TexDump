@@ -66,14 +66,11 @@
    <widget class="QLineEdit" name="destination_ip_text_box">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>135</x>
       <y>40</y>
       <width>251</width>
       <height>20</height>
      </rect>
-    </property>
-    <property name="inputMask">
-     <string comment="000.000.000.000;_"/>
     </property>
    </widget>
    <widget class="QLabel" name="destination_ip_lable">
