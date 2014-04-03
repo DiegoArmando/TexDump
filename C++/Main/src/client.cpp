@@ -1,10 +1,11 @@
 #include "client.h"
 
+//returns the one instance of Client class
 Client* Client::getInstance() {
 	static Client client;
 	return &client;
 }
-
+//initilzes connection to server and connects
 int Client::init()
 {
 	WSADATA wsaData;
@@ -67,6 +68,7 @@ int Client::init()
 	freeaddrinfo(result);//delete result and free memory
 	return 0;
 }
+//waits for incoming messages from server performs appropriate actions
 void Client::listening_thread()
 {
 	int iResult;
@@ -94,7 +96,7 @@ void Client::listening_thread()
 			break;
 	}
 }
-
+//returns a vector of connected devices
 std::vector<std::string> Client::get_devices()
 {
 	std::vector<std::string> devices;
@@ -122,17 +124,20 @@ std::vector<std::string> Client::get_devices()
 	return devices;
 
 }
+//sends message to destination(through server)
 void Client::send_message(std::string message,std::string destination)
 {
 	std::string temp = "SEND_TO_" + destination + ":" + message+"\0";
 	send(ConnectSocket, temp.c_str(), temp.length(), 0);
 }
+//sets the name of the connection and sets it on server
 void Client::set_name(std::string _name)
 {
 	std::string temp("SET_NAME:");
 	temp += _name;
 	send(ConnectSocket, temp.c_str(), temp.length(), 0);
 }
+//used to help get ip address
 void *Client::get_in_addr(struct sockaddr *sa)
 {
 	if (sa->sa_family == AF_INET) {

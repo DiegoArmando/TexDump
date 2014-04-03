@@ -22,19 +22,23 @@ class Client
 {
 public:
 	
-	static Client* getInstance();
-	int init();
-	void listening_thread();
-	void send_message(std::string message,std::string destination);
-	std::vector<std::string> get_devices();
-	void set_name(std::string name);
-	std::string get_name();
+	static Client* getInstance();//returns the one instance of Client class
+	int init();//initilzes connection to server and connects
+	void listening_thread();//waits for incoming messages from server performs appropriate actions
+	void send_message(std::string message,std::string destination);//sends message to destination(through server)
+	std::vector<std::string> get_devices();//returns a vector of connected devices
+	void set_name(std::string name);//sets the name of the connection and sets it on server
+	
 private:
-	SOCKET ConnectSocket;
-	char recvbuf[512];
+	SOCKET ConnectSocket;//socket that will be connected to server
+	char recvbuf[512];//buffer that is updated by listening_thread()
+
+	//used to make sure only one instance of Client class exists
 	Client(){ };
 	Client(Client const&){ };
 	void operator=(Client const&){};
+
+	//used to help get ip address
 	void *get_in_addr(struct sockaddr *sa);
 	
 };
