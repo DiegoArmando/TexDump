@@ -75,15 +75,20 @@ void Client::listening_thread()
 		iResult = recv(ConnectSocket, recvbuf, 512, 0);
 		if (iResult>0)
 		{
+			printf("Message: ");
+			printf(recvbuf);
+			printf("\n");
 			Sleep(1000);
+			
 			if (recvbuf[0])
 			{
 				std::string mess(recvbuf);
 				Message * message = new Message(mess.substr(mess.find(":") + 1), "", mess.substr(0, mess.find(":")));
 				Manager::getInstance()->receive_message(*message);
+				memset(recvbuf, 0, sizeof(recvbuf));
 			}
 			
-			memset(recvbuf, 0, sizeof(recvbuf));
+			
 		}
 		else
 			break;
