@@ -1,6 +1,7 @@
 #include "manager.h"
 #include <QApplication>
 #include <thread>
+#include "client.h"
 #include "gui.h"
 
 int main(int argc, char *argv[])
@@ -11,6 +12,9 @@ int main(int argc, char *argv[])
 	Gui gui;
 	Manager::getInstance()->set_gui(&gui);
 	QApplication::setQuitOnLastWindowClosed(false);
-	
+
+	Client* client = Client::getInstance();
+	client->init();
+
 	return qapp.exec();
 }

@@ -4,6 +4,7 @@
 #include <string>
 #include <QObject>
 #include "message.h"
+#include "client.h"
 
 // The manager is a singlton class that manages comunication between the client
 // and the GUI. It is also in charge of handling any user requests generated from the GUI

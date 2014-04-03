@@ -7,6 +7,7 @@
 #include <QTextstream>
 #include <QUrl>
 
+
 //Recives a message, and attempts to log the message
 void Manager::receive_message(Message message) {
 	this->message = message;
@@ -35,9 +36,10 @@ void Manager::open_log() {
 }
 
 //Tells the client to send message to destination
-void Manager::send_message(std::string message, std::string destination) {
+void Manager::send_message(std::string message, std::string destination) 
+{
 
-	//TO DO: implemnt the client, and send the message.
+	Client::getInstance()->send_message(message, destination);
 
 }
 

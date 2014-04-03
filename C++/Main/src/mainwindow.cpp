@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-	ui->destination_ip_text_box->setInputMask(QString("000.000.000.000"));
-	ui->destination_ip_text_box->setText(QString("000.000.000.000"));
+	ui->destination_ip_text_box->setInputMask(QString("Device Name"));
+	ui->destination_ip_text_box->setText(QString("Device Name"));
 	ui->log_action->setChecked(Manager::getInstance()->get_log_message_boolean());
 
 	confingure_actions();
