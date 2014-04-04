@@ -20,13 +20,13 @@ void Manager::receive_message(Message message) {
 Message Manager::get_last_message() {
 	return message;
 
-	//TO DO: this meathod is not thread safe, make it thread safe.
+	//TO DO: this method is not thread safe, make it thread safe.
 }
 
 //This function tells the aplication to exit
 void Manager::close() {
 
-	//TO DO: add any code nessisary to stop the client thread.
+	//TO DO: add any code neccesary to stop the client thread.
 
 }
 
@@ -60,12 +60,12 @@ void Manager::log(Message message) {
 }
 
 //This fuction is run on the Application startup to load any user settings
-//Such as hot keys, wether to log messages and where to store them.
+//Such as hot keys, whether to log messages and where to store them.
 //If no user settings are found, sets them to their default values.
 void Manager::load_user_settings() {
 	log_messages = true;
 
-	//TO DO: implente a users setting file, and load it
+	//TO DO: implement a users setting file, and load it
 }
 
 
