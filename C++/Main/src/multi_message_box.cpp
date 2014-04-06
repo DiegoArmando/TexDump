@@ -9,7 +9,15 @@ multi_message_box::multi_message_box(QWidget *parent) :
 {
     ui->setupUi(this);
 
-	
+    ui->message_text_box->setOpenExternalLinks(true);
+    ui->message_text_box->setOpenLinks(true);
+
+    clipboard = QApplication::clipboard();
+
+    setWindowIcon(QIcon(":/images/multi_message.png"));
+
+    connect(ui->copy_button, SIGNAL(clicked()), this, SLOT(on_copy_button_clicked()));
+    connect(ui->log_button, SIGNAL(clicked()), this, SLOT(on_log_button_clicked()));
 }
 
 multi_message_box::~multi_message_box()
@@ -24,7 +32,7 @@ void multi_message_box::on_close_button_clicked()
 
 void multi_message_box::on_copy_button_clicked()
 {
-    //TO DO: implement functionality
+  clipboard->setText(ui->message_text_box->toPlainText());
 }
 
 void multi_message_box::on_log_button_clicked()

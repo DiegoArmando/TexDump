@@ -2,6 +2,7 @@
 #define MULTI_MESSAGE_BOX_H
 
 #include <QWidget>
+#include <QClipboard>
 #include "message.h"
 
 namespace Ui {
@@ -26,7 +27,8 @@ private slots:
     void on_log_button_clicked();
 
 private:
-    Ui::multi_message_box *ui;
+  Ui::multi_message_box *ui;
+  QClipboard *clipboard;
 };
 
 #endif // MULTI_MESSAGE_BOX_H

@@ -2,6 +2,7 @@
 #define SINGLE_MESSAGE_BOX_H
 
 #include <QDialog>
+#include <QClipboard>
 #include "message.h"
 
 namespace Ui {
@@ -24,6 +25,7 @@ private slots:
 
 private:
     Ui::single_message_box *ui;
+    QClipboard *clipboard;
 };
 
 #endif // SINGLE_MESSAGE_BOX_H

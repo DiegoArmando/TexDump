@@ -10,6 +10,12 @@ single_message_box::single_message_box(QWidget *parent) :
 
 	ui->message_text_box->setOpenExternalLinks(true);
 	ui->message_text_box->setOpenLinks(true);
+
+  clipboard = QApplication::clipboard();
+
+  setWindowIcon(QIcon(":/images/one_message.png"));
+
+  connect(ui->copy_button, SIGNAL(clicked()), this, SLOT(on_copy_button_clicked()));
 }
 
 single_message_box::~single_message_box()
@@ -19,7 +25,7 @@ single_message_box::~single_message_box()
 
 void single_message_box::on_copy_button_clicked()
 {
-    //TO DO: inplement the functionality
+  clipboard->setText(ui->message_text_box->toPlainText());
 }
 
 void single_message_box::on_close_button_clicked()
