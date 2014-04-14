@@ -4,6 +4,11 @@
 #include <QMainWindow>
 #include <QSystemTrayIcon>
 #include <QEvent>
+#include <qstandardpaths.h>
+#include <qfile.h>
+#include <qdir.h>
+#include <qsettings.h>
+#include <stdio.h>
 #include "manager.h"
 #include "single_message_box.h"
 #include "multi_message_box.h"

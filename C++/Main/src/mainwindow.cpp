@@ -8,6 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 	//ui->destination_ip_text_box->setInputMask(QString("Device Name"));
 	//ui->destination_ip_text_box->setText(QString("Device Name"));
+	
+	
+	QFile userSettings;
+	//QDir::setCurrent(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation));
+	userSettings.open(QStandardPaths::ConfigLocation, QIODevice::ReadWrite, QFileDevice::DontCloseHandle);
+
 	ui->log_action->setChecked(Manager::getInstance()->get_log_message_boolean());
 
 	confingure_actions();
