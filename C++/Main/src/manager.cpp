@@ -6,7 +6,8 @@
 #include <QFile>
 #include <QTextstream>
 #include <QUrl>
-
+#include "client.h"
+#include "gui.h"
 
 //Recives a message, and attempts to log the message
 void Manager::receive_message(Message message) {
@@ -66,6 +67,10 @@ void Manager::load_user_settings() {
 	log_messages = true;
 
 	//TO DO: implement a users setting file, and load it
+}
+
+void Manager::send_hot_key_pressed(std::string text_to_send) {
+	send_message(text_to_send, ((Gui*)gui)->get_destination());
 }
 
 

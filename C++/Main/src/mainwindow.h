@@ -21,6 +21,7 @@ public:
 	static const QEvent::Type new_message_type = static_cast<QEvent::Type>(1000);
 
     explicit MainWindow(QWidget *parent = 0);
+	std::string get_destination();
     ~MainWindow();
 
 private slots:

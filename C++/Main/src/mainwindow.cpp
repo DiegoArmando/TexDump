@@ -63,3 +63,8 @@ void MainWindow::on_send_button_clicked()
 	
 }
 
+std::string MainWindow::get_destination() {
+	QString Qip = this->ui->destination_ip_text_box->text();
+	return Qip.toStdString();
+}
+
