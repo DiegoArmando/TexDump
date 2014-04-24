@@ -45,12 +45,12 @@
      <rect>
       <x>15</x>
       <y>10</y>
-      <width>281</width>
+      <width>271</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Your IP: ???.???.???.???</string>
+     <string>Your Computer Name: </string>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="message_text_box">

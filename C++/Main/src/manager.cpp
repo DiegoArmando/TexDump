@@ -40,7 +40,7 @@ void Manager::open_log() {
 void Manager::send_message(std::string message, std::string destination) 
 {
 
-	Client::getInstance()->send_message(message, destination);
+	Manager::getInstance()->send_message(message, destination);
 
 }
 

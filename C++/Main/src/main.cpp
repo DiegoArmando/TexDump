@@ -6,7 +6,7 @@
 #include "hot_key_listener.h"
 
 void new_thread(void * args) {
-	((Client*)args)->listening_thread();
+	((Client*)args)->listeningThread();
 }
 
 void start_hot_key_thread(void * args) {

@@ -67,7 +67,7 @@ public:
         log_button->setGeometry(QRect(310, 100, 75, 61));
         your_ip_lable = new QLabel(centralWidget);
         your_ip_lable->setObjectName(QStringLiteral("your_ip_lable"));
-        your_ip_lable->setGeometry(QRect(15, 10, 281, 20));
+        your_ip_lable->setGeometry(QRect(15, 10, 271, 20));
         message_text_box = new QPlainTextEdit(centralWidget);
         message_text_box->setObjectName(QStringLiteral("message_text_box"));
         message_text_box->setGeometry(QRect(30, 110, 261, 121));
@@ -100,7 +100,7 @@ public:
         copy_close_action->setText(QApplication::translate("MainWindow", "Set Copy Close Hot Key", 0));
         send_button->setText(QApplication::translate("MainWindow", "Send", 0));
         log_button->setText(QApplication::translate("MainWindow", "Log", 0));
-        your_ip_lable->setText(QApplication::translate("MainWindow", "Your IP: ???.???.???.???", 0));
+        your_ip_lable->setText(QApplication::translate("MainWindow", "Your Computer Name: ", 0));
         destination_ip_lable->setText(QApplication::translate("MainWindow", "Send messages to :", 0));
         menuSettings->setTitle(QApplication::translate("MainWindow", "Settings", 0));
     } // retranslateUi
