@@ -34,7 +34,18 @@ void Manager::close() {
 
 //Opens the Log File
 void Manager::open_log() {
-	QDesktopServices::openUrl(QUrl("log.txt"));
+
+	QDir(log_directory).exists();
+	QDir().mkdir(log_directory);
+
+	QFile log(QString::fromStdString(log_directory.toStdString() + "/log.txt"));
+	if (!log.exists()) {
+		log.open(QIODevice::Append | QIODevice::Text);
+		log.close();
+	}
+
+	std::string str = "file:///" + log_directory.toStdString() + "/log.txt";
+	QDesktopServices::openUrl(QUrl(QString(str.c_str())));
 }
 
 //Tells the client to send message to destination
@@ -51,7 +62,10 @@ void Manager::log(Message message) {
 	if (!get_log_message_boolean())
 		return;
 
-	QFile log(QString::fromStdString("log.txt"));
+	QDir(log_directory).exists();
+	QDir().mkdir(log_directory);
+
+	QFile log(QString::fromStdString(log_directory.toStdString() + "/log.txt"));
 	log.open(QIODevice::Append | QIODevice::Text);
 	QTextStream out(&log);
 
@@ -68,6 +82,8 @@ void Manager::load_user_settings() {
 	info_window = new userinfo;
 	QSettings settings("TexTeam", "TexDump");
 	
+	settings.clear();
+	log_messages = true;
 	if (!settings.contains("username")) {
 		create_default_settings();
 	}
@@ -76,11 +92,19 @@ void Manager::load_user_settings() {
 		settings.value("password").toString().toStdString(),
 		settings.value("deviceName").toString().toStdString());
 
+	log_directory = settings.value("logDirectory").toString();
+
 	log_messages = true;
 }
+
 void Manager::create_default_settings() {
 	QSettings settings("TexTeam", "TexDump");
 	info_window->show();
+
+	log_directory = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/textdump";
+	settings.setValue("logDirectory", log_directory);
+
+
 }
 
 void Manager::send_hot_key_pressed(std::string text_to_send) {

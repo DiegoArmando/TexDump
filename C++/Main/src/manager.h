@@ -50,7 +50,7 @@ private:
 
 	bool log_messages;
 	Message message;
-
+	QString log_directory;
 	userinfo* info_window;
 	
 };
