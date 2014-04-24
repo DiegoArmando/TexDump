@@ -13,9 +13,9 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -36,8 +36,8 @@ public:
     QPushButton *log_button;
     QLabel *your_ip_lable;
     QPlainTextEdit *message_text_box;
-    QLineEdit *destination_ip_text_box;
     QLabel *destination_ip_lable;
+    QComboBox *computer_list_box;
     QMenuBar *menuBar;
     QMenu *menuSettings;
 
@@ -71,12 +71,12 @@ public:
         message_text_box = new QPlainTextEdit(centralWidget);
         message_text_box->setObjectName(QStringLiteral("message_text_box"));
         message_text_box->setGeometry(QRect(30, 110, 261, 121));
-        destination_ip_text_box = new QLineEdit(centralWidget);
-        destination_ip_text_box->setObjectName(QStringLiteral("destination_ip_text_box"));
-        destination_ip_text_box->setGeometry(QRect(135, 40, 251, 20));
         destination_ip_lable = new QLabel(centralWidget);
         destination_ip_lable->setObjectName(QStringLiteral("destination_ip_lable"));
         destination_ip_lable->setGeometry(QRect(10, 40, 121, 20));
+        computer_list_box = new QComboBox(centralWidget);
+        computer_list_box->setObjectName(QStringLiteral("computer_list_box"));
+        computer_list_box->setGeometry(QRect(150, 40, 131, 22));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -102,6 +102,11 @@ public:
         log_button->setText(QApplication::translate("MainWindow", "Log", 0));
         your_ip_lable->setText(QApplication::translate("MainWindow", "Your Computer Name: ", 0));
         destination_ip_lable->setText(QApplication::translate("MainWindow", "Send messages to :", 0));
+        computer_list_box->clear();
+        computer_list_box->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "A Computer", 0)
+         << QApplication::translate("MainWindow", "Another Computer", 0)
+        );
         menuSettings->setTitle(QApplication::translate("MainWindow", "Settings", 0));
     } // retranslateUi
 

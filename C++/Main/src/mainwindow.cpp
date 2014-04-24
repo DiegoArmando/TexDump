@@ -56,7 +56,7 @@ void MainWindow::on_send_button_clicked()
 	QString Qmessage = this->ui->message_text_box->toPlainText();
 	std::string message(Qmessage.toLatin1().data());
 
-	QString Qip = this->ui->destination_ip_text_box->text();
+	QString Qip = this->ui->computer_list_box->currentText();
 	std::string ip(Qip.toLatin1().data());
 
 	Manager::getInstance()->send_message(message, ip);
@@ -64,7 +64,7 @@ void MainWindow::on_send_button_clicked()
 }
 
 std::string MainWindow::get_destination() {
-	QString Qip = this->ui->destination_ip_text_box->text();
+	QString Qip = this->ui->computer_list_box->currentText();
 	return Qip.toStdString();
 }
 
