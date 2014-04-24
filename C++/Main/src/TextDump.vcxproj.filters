@@ -172,4 +172,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\multi_message.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\no_message.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\one_message.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\multi_message_small.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\no_message_small.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\one_message_small.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

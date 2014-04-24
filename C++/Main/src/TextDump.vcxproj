@@ -56,7 +56,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>"..\..\..\..\..\..\..\..\Qt\qt5\qtbase\include";"..\..\..\..\..\..\..\..\Qt\qt5\qtbase\include\QtWidgets";"..\..\..\..\..\..\..\..\Qt\qt5\qtbase\include\QtGui";"..\..\..\..\..\..\..\..\Qt\qt5\qtbase\include\QtANGLE";"..\..\..\..\..\..\..\..\Qt\qt5\qtbase\include\QtCore";"debug";".";..\..\..\..\..\..\..\..\Qt\qt5\qtbase\mkspecs\win32-msvc2013;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\qt5\qtbase\include;C:\Qt\qt5\qtbase\include\QtWidgets;C:\Qt\qt5\qtbase\include\QtGui;C:\Qt\qt5\qtbase\include\QtANGLE;C:\Qt\qt5\qtbase\include\QtCore;debug;.;C:\Qt\qt5\qtbase\mkspecs\win32-msvc2013;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>debug\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -291,6 +291,14 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\qrc_textdumpicons.cpp;%(Outputs)</Outputs>
     </CustomBuild>
     <None Include="images\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\multi_message.png" />
+    <Image Include="images\multi_message_small.png" />
+    <Image Include="images\no_message.png" />
+    <Image Include="images\no_message_small.png" />
+    <Image Include="images\one_message.png" />
+    <Image Include="images\one_message_small.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

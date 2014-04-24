@@ -11,7 +11,6 @@ Gui::Gui()
 
 	connect(Manager::getInstance(), SIGNAL(new_message_recived()), this, SLOT(new_message()));
 
-
 	m_message_box = new multi_message_box();
 	s_message_box = new single_message_box();
 	main_window = new MainWindow();
@@ -29,7 +28,7 @@ void Gui::create_tray_icon() {
 	tray_icon_menu->addAction(quit_action);
 
 	tray_icon = new QSystemTrayIcon();
-	tray_icon->setIcon(QIcon(":/images/bad.png"));
+	tray_icon->setIcon(QIcon(":/images/no_message.png"));
 	tray_icon->setContextMenu(tray_icon_menu);
 	tray_icon->show();
 }
@@ -53,17 +52,19 @@ void Gui::tray_icon_clicked(QSystemTrayIcon::ActivationReason reason) {
 	case QSystemTrayIcon::Trigger:
 	case QSystemTrayIcon::DoubleClick:
 		if (message_counter == 0) {
-			main_window->showNormal();
+      main_window->showNormal();
 		}
 		else if (message_counter == 1) {
-			message_counter = 0;
+      message_counter = 0;
+      tray_icon->setIcon(QIcon(":/images/no_message.png"));
 			s_message_box->set_message(last_message);
 			s_message_box->showNormal();
 		}
 		else {
 			m_message_box->set_message(last_message, message_counter);
-			message_counter = 0;
-			m_message_box->showNormal();
+      message_counter = 0;
+      tray_icon->setIcon(QIcon(":/images/no_message.png"));
+      m_message_box->showNormal();
 		}
 		break;
 	default:
@@ -75,6 +76,12 @@ void Gui::tray_icon_clicked(QSystemTrayIcon::ActivationReason reason) {
 void Gui::new_message() {
 	last_message = Manager::getInstance()->get_last_message();
 	message_counter++;
+  if (message_counter == 1){
+    tray_icon->setIcon(QIcon(":/images/one_message.png"));
+  }
+  else{
+    tray_icon->setIcon(QIcon(":/images/multi_message.png"));
+  }
 }
 
 
