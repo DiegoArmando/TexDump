@@ -64,7 +64,7 @@ void MainWindow::on_send_button_clicked()
 	std::string ip(Qip.toLatin1().data());
 
 	Manager::getInstance()->send_message(message, ip);
-	
+	close();
 }
 
 std::string MainWindow::get_destination() {

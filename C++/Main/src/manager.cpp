@@ -25,18 +25,19 @@ Message Manager::get_last_message() {
 	//TO DO: this method is not thread safe, make it thread safe.
 }
 
-//This function tells the aplication to exit
+//This function is called when the user request the application be closed
+//so any nessiary clean up can be done
 void Manager::close() {
 	delete info_window;
-	//TO DO: add any code neccesary to stop the client thread.
 
 }
 
 //Opens the Log File
 void Manager::open_log() {
 
-	QDir(log_directory).exists();
-	QDir().mkdir(log_directory);
+	if (!QDir(log_directory).exists()) {
+		QDir().mkdir(log_directory);
+	}
 
 	QFile log(QString::fromStdString(log_directory.toStdString() + "/log.txt"));
 	if (!log.exists()) {
@@ -62,8 +63,9 @@ void Manager::log(Message message) {
 	if (!get_log_message_boolean())
 		return;
 
-	QDir(log_directory).exists();
-	QDir().mkdir(log_directory);
+	if (!QDir(log_directory).exists()) {
+		QDir().mkdir(log_directory);
+	}
 
 	QFile log(QString::fromStdString(log_directory.toStdString() + "/log.txt"));
 	log.open(QIODevice::Append | QIODevice::Text);
@@ -115,6 +117,12 @@ void Manager::send_hot_key_pressed(std::string text_to_send) {
 
 bool Manager::login(std::string username, std::string password, std::string deviceName) {
 	Client::getInstance()->login(username, password, deviceName);
+
+	std::string error_string;
+	if (Client::getInstance()->errorOccurred()) {
+		error_string = Client::getInstance()->getCurrentError();
+	}
+
 	QSettings settings("TexTeam", "TexDump");
 
 	settings.setValue("username", QString(username.c_str()));
@@ -125,6 +133,12 @@ bool Manager::login(std::string username, std::string password, std::string devi
 
 bool Manager::createUser(std::string username, std::string password, std::string deviceName, std::string email) {
 	Client::getInstance()->createUser(username, password, deviceName, email);
+
+	std::string error_string;
+	if (Client::getInstance()->errorOccurred()) {
+		error_string = Client::getInstance()->getCurrentError();
+	}
+
 	QSettings settings("TexTeam", "TexDump");
 
 	settings.setValue("username", QString(username.c_str()));
@@ -135,6 +149,11 @@ bool Manager::createUser(std::string username, std::string password, std::string
 
 QStringList Manager::get_connected_computers() {
 	std::vector<std::string> strings = Client::getInstance()->getDevices();
+
+	std::string error_string;
+	if (Client::getInstance()->errorOccurred()) {
+		error_string = Client::getInstance()->getCurrentError();
+	}
 
 	QStringList list;
 
