@@ -27,7 +27,7 @@ Message Manager::get_last_message() {
 
 //This function tells the aplication to exit
 void Manager::close() {
-
+	delete info_window;
 	//TO DO: add any code neccesary to stop the client thread.
 
 }
@@ -41,7 +41,7 @@ void Manager::open_log() {
 void Manager::send_message(std::string message, std::string destination) 
 {
 
-	Manager::getInstance()->send_message(message, destination);
+	Client::getInstance()->sendMessage(message, destination);
 
 }
 
@@ -65,21 +65,56 @@ void Manager::log(Message message) {
 //Such as hot keys, whether to log messages and where to store them.
 //If no user settings are found, sets them to their default values.
 void Manager::load_user_settings() {
+	info_window = new userinfo;
 	QSettings settings("TexTeam", "TexDump");
 	
-	if (!settings.contains("LogPath")) {
-		int i = 0;
+	if (!settings.contains("username")) {
+		create_default_settings();
 	}
 
-	settings.setValue("TestValue", 55);
+	login(settings.value("username").toString().toStdString(),
+		settings.value("password").toString().toStdString(),
+		settings.value("deviceName").toString().toStdString());
+
 	log_messages = true;
-
-	//TO DO: implement a users setting file, and load it
 }
-void create_default_settings(QSettings settings) {
-
+void Manager::create_default_settings() {
+	QSettings settings("TexTeam", "TexDump");
+	info_window->show();
 }
 
 void Manager::send_hot_key_pressed(std::string text_to_send) {
 	send_message(text_to_send, ((Gui*)gui)->get_destination());
+}
+
+bool Manager::login(std::string username, std::string password, std::string deviceName) {
+	Client::getInstance()->login(username, password, deviceName);
+	QSettings settings("TexTeam", "TexDump");
+
+	settings.setValue("username", QString(username.c_str()));
+	settings.setValue("password", QString(password.c_str()));
+	settings.setValue("deviceName", QString(deviceName.c_str()));
+	return true;
+}
+
+bool Manager::createUser(std::string username, std::string password, std::string deviceName, std::string email) {
+	Client::getInstance()->createUser(username, password, deviceName, email);
+	QSettings settings("TexTeam", "TexDump");
+
+	settings.setValue("username", QString(username.c_str()));
+	settings.setValue("password", QString(password.c_str()));
+	settings.setValue("deviceName", QString(deviceName.c_str()));
+	return true;
+}
+
+QStringList Manager::get_connected_computers() {
+	std::vector<std::string> strings = Client::getInstance()->getDevices();
+
+	QStringList list;
+
+	for (int i = 0; i < strings.size(); ++i) {
+		list.append(QString(strings[i].c_str()));
+	}
+
+	return list;
 }

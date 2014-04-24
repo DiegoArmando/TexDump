@@ -52,19 +52,20 @@ void Gui::tray_icon_clicked(QSystemTrayIcon::ActivationReason reason) {
 	case QSystemTrayIcon::Trigger:
 	case QSystemTrayIcon::DoubleClick:
 		if (message_counter == 0) {
-      main_window->showNormal();
+			main_window->set_combo_box(Manager::getInstance()->get_connected_computers());
+			main_window->showNormal();
 		}
 		else if (message_counter == 1) {
-      message_counter = 0;
-      tray_icon->setIcon(QIcon(":/images/no_message.png"));
+			message_counter = 0;
+			tray_icon->setIcon(QIcon(":/images/no_message.png"));
 			s_message_box->set_message(last_message);
 			s_message_box->showNormal();
 		}
 		else {
 			m_message_box->set_message(last_message, message_counter);
-      message_counter = 0;
-      tray_icon->setIcon(QIcon(":/images/no_message.png"));
-      m_message_box->showNormal();
+			message_counter = 0;
+			tray_icon->setIcon(QIcon(":/images/no_message.png"));
+			m_message_box->showNormal();
 		}
 		break;
 	default:

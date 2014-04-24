@@ -49,6 +49,11 @@ void MainWindow::on_log_button_clicked()
 	Manager::getInstance()->open_log();
 }
 
+void MainWindow::set_combo_box(QStringList list) {
+	ui->computer_list_box->clear();
+	ui->computer_list_box->addItems(list);
+}
+
 //Tells the manager to send the current message
 void MainWindow::on_send_button_clicked()
 {

@@ -5,6 +5,7 @@
 #include <QObject>
 #include <qsettings.h>
 #include "message.h"
+#include "userinfo.h"
 
 // The manager is a singlton class that manages comunication between the client
 // and the GUI. It is also in charge of handling any user requests generated from the GUI
@@ -30,6 +31,11 @@ public:
 	void set_gui(QObject* object) { gui = object; }
 	void send_hot_key_pressed(std::string text_to_send);
 
+	bool login(std::string username, std::string password, std::string deviceName);
+	bool createUser(std::string username, std::string password, std::string deviceName, std::string email);
+
+	QStringList get_connected_computers();
+
 signals:
 	void new_message_recived();
 
@@ -39,11 +45,13 @@ private:
 	Manager(Manager const&);
 	void operator=(Manager const&);
 	void load_user_settings();
-	void create_default_settings(QSettings settings);
+	void create_default_settings();
 	void log(Message message);
 
 	bool log_messages;
 	Message message;
+
+	userinfo* info_window;
 	
 };
 
