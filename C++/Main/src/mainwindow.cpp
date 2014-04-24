@@ -72,3 +72,8 @@ std::string MainWindow::get_destination() {
 	return Qip.toStdString();
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+	Manager::getInstance()->open_login_window();
+}

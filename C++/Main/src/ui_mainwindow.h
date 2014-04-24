@@ -38,6 +38,7 @@ public:
     QPlainTextEdit *message_text_box;
     QLabel *destination_ip_lable;
     QComboBox *computer_list_box;
+    QPushButton *pushButton;
     QMenuBar *menuBar;
     QMenu *menuSettings;
 
@@ -77,6 +78,9 @@ public:
         computer_list_box = new QComboBox(centralWidget);
         computer_list_box->setObjectName(QStringLiteral("computer_list_box"));
         computer_list_box->setGeometry(QRect(150, 40, 131, 22));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(310, 30, 75, 51));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -107,6 +111,7 @@ public:
          << QApplication::translate("MainWindow", "A Computer", 0)
          << QApplication::translate("MainWindow", "Another Computer", 0)
         );
+        pushButton->setText(QApplication::translate("MainWindow", "Log In", 0));
         menuSettings->setTitle(QApplication::translate("MainWindow", "Settings", 0));
     } // retranslateUi
 

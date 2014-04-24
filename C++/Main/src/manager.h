@@ -34,6 +34,7 @@ public:
 	bool login(std::string username, std::string password, std::string deviceName);
 	bool createUser(std::string username, std::string password, std::string deviceName, std::string email);
 
+	void open_login_window();
 	QStringList get_connected_computers();
 
 signals:

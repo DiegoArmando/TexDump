@@ -34,6 +34,8 @@ private slots:
 	void on_send_button_clicked();
 	void toggle_log(bool log);
 
+    void on_pushButton_clicked();
+
 private:
 	Ui::MainWindow *ui;
 

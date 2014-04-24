@@ -163,3 +163,7 @@ QStringList Manager::get_connected_computers() {
 
 	return list;
 }
+
+void Manager::open_login_window() {
+	info_window->show();
+}

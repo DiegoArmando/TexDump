@@ -8,7 +8,7 @@ userinfo::userinfo(QWidget *parent) :
     ui(new Ui::userinfo)
 {
     ui->setupUi(this);
-	setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
+	//setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint);
 	ui->password_feild->setInputMask("Nnnnnnnnnnnn");
 	ui->password_feild->setText("");
 	ui->computer_feild->setInputMask("Nnnnnnnnnnnn");
