@@ -1,38 +1,53 @@
 #ifndef __CLIENT_SOCKET_INCLUDED__
 #define __CLIENT_SOCKET_INCLUDED__
 
-
 #include <string.h>
 #include <stdio.h>
+#include <ctime>
+#include <mysql.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <iostream>
 #include <sys/socket.h>
 #include <pthread.h>
-#include "client_socket_container.h"
+#include <fstream>
+#include <sstream>
 
 class client_socket_container;
 
 class client_socket
 {
     public:
-        client_socket(char * client_ip, int socket,client_socket_container* container);//constructor
-        ~client_socket();//destructor(called by itself)
-        char* get_client_IP();//returns client's ip address
-        int get_socket_number();//returns client's socket number
-        std::string get_client_name();//returns client's name
-        void set_client_name(std::string name);//sets client's name
+        client_socket(char * client_ip, int socket);
+        ~client_socket();
         
-        void * client_thread();//client's main thread. waits for received tcp data and calls parseCommand with the message
+        //thread that listens to client
+        void * client_thread();
         
     private:
-        char* client_IP;//example: "172.193.231.4"
-        std::string client_name;//set to client_ip in constructor, can be changed by calling set_client_name
-        int socket_number;//socket id given by OS 
+        std::string id;
+        unsigned int socketID;
+        char * clientIP;
+        MYSQL *connect;
         
-        client_socket_container* socket_container;//Set in constructor, this enables client to perform operations on the container of clients
+        void parseCommand(char * message);//calls appropriate methods based on received data
+         
+         
+        /* Database query methods */
         
-        void parseCommand(char * message);//when the client_socket thread receives new data this method parses the message and calls appropriate functions
+        std::string getComputerName();
+        std::string getUsername();
+        std::string getComputerID(std::string userID,std::string computerName);
+        std::string getUserID();
+        std::string getUserID(const char*username,const char*password);
+        std::string getAvailableDevices();
+       
+        void newUser(const char * username,const char * password,const char*compName,const char*email);//adds a new user to database 
+        void login(const char * username,const char * password,const char * compName);//logs in client
+        void setComputerName(const char * name);//sets computers name of a logged in client 
+        void sendToDestination(std::string destinationName, std::string message);//creates and adds a message to the message database
+        
+        std::string currentDateTime();//returns a string of the systems current date and time
 };
 
 #endif

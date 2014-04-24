@@ -92,9 +92,9 @@ void Client::listeningThread()
 				else if (mess.substr(0, mess.find(":")).compare("MESSAGE") == 0)
 				{
 					int pos = mess.find(":");
-					int pos2 = mess.find("%:%", pos+3);
+					int pos2 = mess.find("%:%", pos + 3);
 					int pos3 = mess.find("%:%", pos2 + 3);
-					Message * message = new Message(mess.substr(pos3+3),mess.substr(pos2+3,pos3-pos2-1), mess.substr(pos+3,pos2-pos-1));
+					Message * message = new Message(mess.substr(pos3 + 3), mess.substr(pos2 + 3, pos3 - pos2 - 1), mess.substr(pos + 3, pos2 - pos - 1));
 					Manager::getInstance()->receive_message(*message);
 					memset(recvbuf, 0, sizeof(recvbuf));
 				}
@@ -103,7 +103,8 @@ void Client::listeningThread()
 					loggedIn = true;
 				}
 			}
-			
+			else
+				break;
 			
 		}
 	}
