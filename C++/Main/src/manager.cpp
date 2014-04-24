@@ -84,7 +84,7 @@ void Manager::load_user_settings() {
 	info_window = new userinfo;
 	QSettings settings("TexTeam", "TexDump");
 	
-	settings.clear();
+	
 	log_messages = true;
 	if (!settings.contains("username")) {
 		create_default_settings();
