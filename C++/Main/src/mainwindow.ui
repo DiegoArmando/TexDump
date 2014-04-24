@@ -45,12 +45,12 @@
      <rect>
       <x>15</x>
       <y>10</y>
-      <width>281</width>
+      <width>271</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Your IP: ???.???.???.???</string>
+     <string>Your Computer Name: </string>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="message_text_box">
@@ -60,16 +60,6 @@
       <y>110</y>
       <width>261</width>
       <height>121</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="destination_ip_text_box">
-    <property name="geometry">
-     <rect>
-      <x>135</x>
-      <y>40</y>
-      <width>251</width>
-      <height>20</height>
      </rect>
     </property>
    </widget>
@@ -85,6 +75,26 @@
     <property name="text">
      <string>Send messages to :</string>
     </property>
+   </widget>
+   <widget class="QComboBox" name="computer_list_box">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>40</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>A Computer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Another Computer</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

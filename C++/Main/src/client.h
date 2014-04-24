@@ -24,11 +24,13 @@ public:
 	
 	static Client* getInstance();//returns the one instance of Client class
 	int init();//initilzes connection to server and connects
-	void listening_thread();//waits for incoming messages from server performs appropriate actions
-	void send_message(std::string message,std::string destination);//sends message to destination(through server)
-	std::vector<std::string> get_devices();//returns a vector of connected devices
-	void set_name(std::string name);//sets the name of the connection and sets it on server
-	
+	void listeningThread();//waits for incoming messages from server performs appropriate actions
+	void sendMessage(std::string message,std::string destination);//sends message to destination(through server)
+	std::vector<std::string> getDevices();//returns a vector of connected devices
+	void setDeviceName(std::string name);//sets the name of the connection and sets it on server
+	void login(std::string username, std::string password, std::string deviceName);
+	void createUser(std::string username, std::string password, std::string deviceName, std::string email);
+
 private:
 	SOCKET ConnectSocket;//socket that will be connected to server
 	char recvbuf[512];//buffer that is updated by listening_thread()

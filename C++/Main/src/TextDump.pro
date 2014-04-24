@@ -30,6 +30,7 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
             single_message_box.ui \
-			multi_message_box.ui
+			multi_message_box.ui \
+    userinfoform.ui
 
 RESOURCES += textdumpicons.qrc

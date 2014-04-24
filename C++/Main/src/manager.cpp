@@ -7,7 +7,8 @@
 #include <qsettings.h>
 #include <QTextstream>
 #include <QUrl>
-
+#include "client.h"
+#include "gui.h"
 
 //Recives a message, and attempts to log the message
 void Manager::receive_message(Message message) {
@@ -40,7 +41,7 @@ void Manager::open_log() {
 void Manager::send_message(std::string message, std::string destination) 
 {
 
-	Client::getInstance()->send_message(message, destination);
+	Manager::getInstance()->send_message(message, destination);
 
 }
 
@@ -76,8 +77,13 @@ void Manager::load_user_settings() {
 	//TO DO: implement a users setting file, and load it
 }
 
+<<<<<<< HEAD
 void create_default_settings(QSettings settings) {
 
+=======
+void Manager::send_hot_key_pressed(std::string text_to_send) {
+	send_message(text_to_send, ((Gui*)gui)->get_destination());
+>>>>>>> ea80376c012bfdfd4f1eabdf0c304361cf6e1414
 }
 
 

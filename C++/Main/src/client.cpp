@@ -69,7 +69,7 @@ int Client::init()
 	return 0;
 }
 //waits for incoming messages from server performs appropriate actions
-void Client::listening_thread()
+void Client::listeningThread()
 {
 	int iResult;
 	while (true)
@@ -96,8 +96,34 @@ void Client::listening_thread()
 			break;
 	}
 }
+
+void Client::login(std::string username, std::string password, std::string deviceName)
+{
+	std::string out = "LOGIN:";
+	out += username;
+	out += ":";
+	out += password;
+	out += ":";
+	out += deviceName;
+
+	send(ConnectSocket, out.c_str(), out.length(), 0);
+
+}
+void Client::createUser(std::string username, std::string password, std::string deviceName, std::string email)
+{
+	std::string out = "REGISTER:";
+	out += username;
+	out += ":";
+	out += password;
+	out += ":";
+	out += deviceName;
+	out += ":";
+	out += email;
+
+	send(ConnectSocket, out.c_str(), out.length(), 0);
+}
 //returns a vector of connected devices
-std::vector<std::string> Client::get_devices()
+std::vector<std::string> Client::getDevices()
 {
 	std::vector<std::string> devices;
 	std::string input = "GET_DEVICES:\0";
@@ -125,13 +151,13 @@ std::vector<std::string> Client::get_devices()
 
 }
 //sends message to destination(through server)
-void Client::send_message(std::string message,std::string destination)
+void Client::sendMessage(std::string message,std::string destination)
 {
 	std::string temp = "SEND_TO_" + destination + ":" + message+"\0";
 	send(ConnectSocket, temp.c_str(), temp.length(), 0);
 }
 //sets the name of the connection and sets it on server
-void Client::set_name(std::string _name)
+void Client::setDeviceName(std::string _name)
 {
 	std::string temp("SET_NAME:");
 	temp += _name;

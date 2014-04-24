@@ -4,7 +4,6 @@
 #include <string>
 #include <QObject>
 #include "message.h"
-#include "client.h"
 
 // The manager is a singlton class that manages comunication between the client
 // and the GUI. It is also in charge of handling any user requests generated from the GUI
@@ -28,6 +27,7 @@ public:
 	bool get_log_message_boolean() { return log_messages; }
 	void set_log_message_boolean(bool log_messages) { this->log_messages = log_messages; }
 	void set_gui(QObject* object) { gui = object; }
+	void send_hot_key_pressed(std::string text_to_send);
 
 signals:
 	void new_message_recived();
