@@ -30,10 +30,17 @@ public:
 	void setDeviceName(std::string name);//sets the name of the connection and sets it on server
 	void login(std::string username, std::string password, std::string deviceName);
 	void createUser(std::string username, std::string password, std::string deviceName, std::string email);
+	bool isLoggedIn();
+	bool errorOccurred();
+	std::string getCurrentError();
 
 private:
 	SOCKET ConnectSocket;//socket that will be connected to server
 	char recvbuf[512];//buffer that is updated by listening_thread()
+
+	bool loggedIn=false;
+	bool errorRecieved = false;
+	std::string errorFromServer;
 
 	//used to make sure only one instance of Client class exists
 	Client(){ };

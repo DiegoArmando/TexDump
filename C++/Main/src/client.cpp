@@ -80,6 +80,16 @@ void Client::listeningThread()
 			printf("Message: ");
 			printf(recvbuf);
 			printf("\n");
+			
+			std::string inc(recvbuf);
+			if (inc.find(":") > 0)
+			{
+				if (inc.substr(0, inc.find(":")).compare("ERROR") == 0)
+				{
+					errorRecieved = true;
+					errorFromServer = inc.substr(inc.find(":") + 1);
+				}
+			}
 			Sleep(1000);
 			
 			if (recvbuf[0])
@@ -171,4 +181,21 @@ void *Client::get_in_addr(struct sockaddr *sa)
 	}
 
 	return &(((struct sockaddr_in6*)sa)->sin6_addr);
+}
+
+bool Client::isLoggedIn()
+{
+	return loggedIn;
+}
+bool Client::errorOccurred()
+{
+	if (errorRecieved)
+	{
+		errorRecieved = false;
+		return true;
+	}
+}
+std::string Client::getCurrentError()
+{
+	return errorFromServer;
 }
