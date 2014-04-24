@@ -87,12 +87,14 @@ void Manager::load_user_settings() {
 	if (!settings.contains("username")) {
 		create_default_settings();
 	}
+	else {
 
-	login(settings.value("username").toString().toStdString(),
-		settings.value("password").toString().toStdString(),
-		settings.value("deviceName").toString().toStdString());
+		login(settings.value("username").toString().toStdString(),
+			settings.value("password").toString().toStdString(),
+			settings.value("deviceName").toString().toStdString());
 
-	log_directory = settings.value("logDirectory").toString();
+		log_directory = settings.value("logDirectory").toString();
+	}
 
 	log_messages = true;
 }

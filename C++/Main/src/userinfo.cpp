@@ -27,6 +27,8 @@ void userinfo::on_login_button_clicked()
 	Manager::getInstance()->login(ui->username_field->text().toStdString(),
 		ui->password_feild->text().toStdString(),
 		ui->computer_feild->text().toStdString());
+
+	close();
 }
 
 void userinfo::on_register_button_clicked()
@@ -35,4 +37,6 @@ void userinfo::on_register_button_clicked()
 		ui->password_feild->text().toStdString(),
 		ui->computer_feild->text().toStdString(),
 		"");
+
+	close();
 }
