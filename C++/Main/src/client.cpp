@@ -94,7 +94,7 @@ void Client::listeningThread()
 					int pos = mess.find(":");
 					int pos2 = mess.find("%:%", pos+3);
 					int pos3 = mess.find("%:%", pos2 + 3);
-					Message * message = new Message(mess.substr(pos3),mess.substr(pos2,pos3-pos2-3), mess.substr(pos,pos2-pos-3));
+					Message * message = new Message(mess.substr(pos3+3),mess.substr(pos2+3,pos3-pos2-1), mess.substr(pos+3,pos2-pos-1));
 					Manager::getInstance()->receive_message(*message);
 					memset(recvbuf, 0, sizeof(recvbuf));
 				}
@@ -106,8 +106,6 @@ void Client::listeningThread()
 			
 			
 		}
-		else
-			break;
 	}
 }
 
@@ -156,7 +154,7 @@ std::vector<std::string> Client::getDevices()
 	}
 	memset(recvbuf, 0, sizeof(recvbuf));
 	printf("Devices: ");
-	for (int i = 0; i < devices.size(); i++)
+	for (unsigned int i = 0; i < devices.size(); i++)
 	{
 		printf("%s,", devices[i].c_str());
 	}
@@ -198,6 +196,7 @@ bool Client::errorOccurred()
 		errorRecieved = false;
 		return true;
 	}
+	return false;
 }
 std::string Client::getCurrentError()
 {
