@@ -80,24 +80,28 @@ void Client::listeningThread()
 			printf("Message: ");
 			printf(recvbuf);
 			printf("\n");
-			
-			std::string inc(recvbuf);
-			if (inc.find(":") > 0)
+			Sleep(1000);
+			std::string mess(recvbuf);
+			if (mess.find(":") > 0)
 			{
-				if (inc.substr(0, inc.find(":")).compare("ERROR") == 0)
+				if (mess.substr(0, mess.find(":")).compare("ERROR") == 0)
 				{
 					errorRecieved = true;
-					errorFromServer = inc.substr(inc.find(":") + 1);
+					errorFromServer = mess.substr(mess.find(":") + 1);
 				}
-			}
-			Sleep(1000);
-			
-			if (recvbuf[0])
-			{
-				std::string mess(recvbuf);
-				Message * message = new Message(mess.substr(mess.find(":") + 1), "", mess.substr(0, mess.find(":")));
-				Manager::getInstance()->receive_message(*message);
-				memset(recvbuf, 0, sizeof(recvbuf));
+				else if (mess.substr(0, mess.find(":")).compare("MESSAGE") == 0)
+				{
+					int pos = mess.find(":");
+					int pos2 = mess.find("%:%", pos+3);
+					int pos3 = mess.find("%:%", pos2 + 3);
+					Message * message = new Message(mess.substr(pos3),mess.substr(pos2,pos3-pos2-3), mess.substr(pos,pos2-pos-3));
+					Manager::getInstance()->receive_message(*message);
+					memset(recvbuf, 0, sizeof(recvbuf));
+				}
+				else if (mess.substr(0, mess.find(":")).compare("LOGGED_IN") == 0)
+				{
+					loggedIn = true;
+				}
 			}
 			
 			
