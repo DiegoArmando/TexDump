@@ -76,14 +76,10 @@ void Manager::load_user_settings() {
 
 	//TO DO: implement a users setting file, and load it
 }
-
-<<<<<<< HEAD
 void create_default_settings(QSettings settings) {
 
-=======
-void Manager::send_hot_key_pressed(std::string text_to_send) {
-	send_message(text_to_send, ((Gui*)gui)->get_destination());
->>>>>>> ea80376c012bfdfd4f1eabdf0c304361cf6e1414
 }
 
-
+void Manager::send_hot_key_pressed(std::string text_to_send) {
+	send_message(text_to_send, ((Gui*)gui)->get_destination());
+}

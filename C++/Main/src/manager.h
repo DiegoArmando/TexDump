@@ -3,6 +3,7 @@
 
 #include <string>
 #include <QObject>
+#include <qsettings.h>
 #include "message.h"
 
 // The manager is a singlton class that manages comunication between the client
