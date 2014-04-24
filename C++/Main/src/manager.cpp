@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <QDesktopservices>
 #include <QFile>
+#include <qsettings.h>
 #include <QTextstream>
 #include <QUrl>
 
@@ -63,9 +64,20 @@ void Manager::log(Message message) {
 //Such as hot keys, whether to log messages and where to store them.
 //If no user settings are found, sets them to their default values.
 void Manager::load_user_settings() {
+	QSettings settings("TexTeam", "TexDump");
+	
+	if (!settings.contains("LogPath")) {
+		int i = 0;
+	}
+
+	settings.setValue("TestValue", 55);
 	log_messages = true;
 
 	//TO DO: implement a users setting file, and load it
+}
+
+void create_default_settings(QSettings settings) {
+
 }
 
 

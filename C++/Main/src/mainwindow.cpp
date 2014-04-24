@@ -6,21 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-	//ui->destination_ip_text_box->setInputMask(QString("Device Name"));
-	//ui->destination_ip_text_box->setText(QString("Device Name"));
-	
-	
-	//QFile userSettings;
-	//QDir::setCurrent(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation));
-	//userSettings.open(QStandardPaths::ConfigLocation, QIODevice::ReadWrite, QFileDevice::DontCloseHandle);
-
-	QSettings settings("TexTeam", "TexDump");
-	
-	settings.setPath(QSettings::IniFormat, QSettings::UserScope, QStandardPaths::displayName(QStandardPaths::ConfigLocation));
-
-	settings.setValue("TestValue", 55);
-
-	//settings.value("valueName", value), settings.setValue()
 
 	ui->log_action->setChecked(Manager::getInstance()->get_log_message_boolean());
 

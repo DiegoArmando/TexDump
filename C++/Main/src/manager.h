@@ -38,6 +38,7 @@ private:
 	Manager(Manager const&);
 	void operator=(Manager const&);
 	void load_user_settings();
+	void create_default_settings(QSettings settings);
 	void log(Message message);
 
 	bool log_messages;
