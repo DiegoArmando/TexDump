@@ -91,5 +91,9 @@ void Gui::new_message() {
 void Gui::quit_app() {
 	Manager::getInstance()->close();
 
+	main_window->close();
+	m_message_box->close();
+	s_message_box->close();
+
 	qApp->quit();
 }

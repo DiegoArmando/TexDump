@@ -9,6 +9,7 @@
 #include <QUrl>
 #include "client.h"
 #include "gui.h"
+#include "hot_key_listener.h"
 
 //Recives a message, and attempts to log the message
 void Manager::receive_message(Message message) {
@@ -28,6 +29,9 @@ Message Manager::get_last_message() {
 //This function is called when the user request the application be closed
 //so any nessiary clean up can be done
 void Manager::close() {
+
+	hot_key_listener::getInstance()->stop();
+
 	delete info_window;
 
 }
@@ -84,7 +88,6 @@ void Manager::load_user_settings() {
 	info_window = new userinfo;
 	QSettings settings("TexTeam", "TexDump");
 	
-	
 	log_messages = true;
 
 	if (!settings.contains("username")) {
@@ -98,8 +101,6 @@ void Manager::load_user_settings() {
 
 		log_directory = settings.value("logDirectory").toString();
 	}
-
-	log_messages = true;
 }
 
 void Manager::create_default_settings() {
