@@ -23,8 +23,7 @@ public:
 	//This is the regual expression used to itedtify URLs in text
 	static const QRegExp url_regex;
 
-	std::string get_destination() { main_window->set_combo_box(Manager::getInstance()->get_connected_computers());
-									return main_window->get_destination(); }
+	std::string get_destination();
 
 	private slots:
 	void new_message();

@@ -29,7 +29,7 @@ Message Manager::get_last_message() {
 //This function is called when the user request the application be closed
 //so any nessiary clean up can be done
 void Manager::close() {
-
+		
 	hot_key_listener::getInstance()->stop();
 
 	delete info_window;

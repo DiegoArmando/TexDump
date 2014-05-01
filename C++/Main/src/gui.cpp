@@ -74,6 +74,15 @@ void Gui::tray_icon_clicked(QSystemTrayIcon::ActivationReason reason) {
 	}
 }
 
+std::string Gui::get_destination() {
+	std::string return_string = main_window->get_destination();
+	if (return_string == "A Computer") {
+		main_window->set_combo_box(Manager::getInstance()->get_connected_computers());
+		return_string = main_window->get_destination();
+	}
+	return return_string;
+}
+
 //This function is called when the manager is informened that there is a new message
 void Gui::new_message() {
 	last_message = Manager::getInstance()->get_last_message();
