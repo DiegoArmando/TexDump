@@ -53,6 +53,7 @@ void Gui::tray_icon_clicked(QSystemTrayIcon::ActivationReason reason) {
 	case QSystemTrayIcon::DoubleClick:
 		if (message_counter == 0) {
 			main_window->set_combo_box(Manager::getInstance()->get_connected_computers());
+			main_window->set_computer_name(Manager::getInstance()->get_computer_name());
 			main_window->showNormal();
 		}
 		else if (message_counter == 1) {

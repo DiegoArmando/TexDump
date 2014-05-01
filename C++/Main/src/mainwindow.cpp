@@ -23,11 +23,11 @@ void MainWindow::confingure_actions() {
 
 
 	//TO DO: right now niether of the below actions do any thing, their functionality must still be implented.
-	set_copy_close_action = new QAction(tr("Set Copy Close"),this);
-	ui->menuSettings->addAction(set_copy_close_action);
+	//set_copy_close_action = new QAction(tr("Set Copy Close"),this);
+	//ui->menuSettings->addAction(set_copy_close_action);
 
-	set_hot_key_action = new QAction(tr("Set Hot Key"), this);
-	ui->menuSettings->addAction(set_hot_key_action);
+	//set_hot_key_action = new QAction(tr("Set Hot Key"), this);
+	//ui->menuSettings->addAction(set_hot_key_action);
 }
 
 MainWindow::~MainWindow()
@@ -52,6 +52,11 @@ void MainWindow::on_log_button_clicked()
 void MainWindow::set_combo_box(QStringList list) {
 	ui->computer_list_box->clear();
 	ui->computer_list_box->addItems(list);
+	ui->computer_list_box->setCurrentIndex(0);
+}
+
+void MainWindow::set_computer_name(std::string name) {
+	ui->your_ip_lable->setText(QString::fromStdString("Your device name: " + name));
 }
 
 //Tells the manager to send the current message

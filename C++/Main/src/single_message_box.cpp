@@ -34,7 +34,7 @@ void single_message_box::on_close_button_clicked()
 }
 
 void single_message_box::set_message(Message message) {
-	std::string s = message.timestamp_ + ": " + message.sender_;
+	std::string s = ""; //message.timestamp_ +": " + message.sender_;
 	ui->sender_timestam_lable->setText(QString::fromStdString(s));
 	
 	QString text = QString::fromStdString(message.text_).replace(Gui::url_regex, "<a href=\"\\1\">\\1</a>");

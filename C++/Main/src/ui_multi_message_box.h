@@ -36,16 +36,16 @@ public:
     {
         if (multi_message_box->objectName().isEmpty())
             multi_message_box->setObjectName(QStringLiteral("multi_message_box"));
-        multi_message_box->resize(400, 300);
+        multi_message_box->resize(391, 309);
         num_messages_lable = new QLabel(multi_message_box);
         num_messages_lable->setObjectName(QStringLiteral("num_messages_lable"));
         num_messages_lable->setGeometry(QRect(100, 10, 201, 16));
         last_message_lable = new QLabel(multi_message_box);
         last_message_lable->setObjectName(QStringLiteral("last_message_lable"));
-        last_message_lable->setGeometry(QRect(10, 40, 131, 16));
+        last_message_lable->setGeometry(QRect(10, 40, 71, 16));
         sender_timestamp_lable = new QLabel(multi_message_box);
         sender_timestamp_lable->setObjectName(QStringLiteral("sender_timestamp_lable"));
-        sender_timestamp_lable->setGeometry(QRect(180, 40, 201, 16));
+        sender_timestamp_lable->setGeometry(QRect(100, 35, 271, 21));
         message_text_box = new QTextBrowser(multi_message_box);
         message_text_box->setObjectName(QStringLiteral("message_text_box"));
         message_text_box->setGeometry(QRect(20, 60, 351, 171));

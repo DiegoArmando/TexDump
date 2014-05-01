@@ -46,7 +46,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 300);
+        MainWindow->resize(400, 291);
         log_action = new QAction(MainWindow);
         log_action->setObjectName(QStringLiteral("log_action"));
         log_action->setCheckable(true);
@@ -68,13 +68,13 @@ public:
         log_button->setGeometry(QRect(310, 100, 75, 61));
         your_ip_lable = new QLabel(centralWidget);
         your_ip_lable->setObjectName(QStringLiteral("your_ip_lable"));
-        your_ip_lable->setGeometry(QRect(15, 10, 271, 20));
+        your_ip_lable->setGeometry(QRect(20, 9, 271, 21));
         message_text_box = new QPlainTextEdit(centralWidget);
         message_text_box->setObjectName(QStringLiteral("message_text_box"));
         message_text_box->setGeometry(QRect(30, 110, 261, 121));
         destination_ip_lable = new QLabel(centralWidget);
         destination_ip_lable->setObjectName(QStringLiteral("destination_ip_lable"));
-        destination_ip_lable->setGeometry(QRect(10, 40, 121, 20));
+        destination_ip_lable->setGeometry(QRect(20, 40, 101, 20));
         computer_list_box = new QComboBox(centralWidget);
         computer_list_box->setObjectName(QStringLiteral("computer_list_box"));
         computer_list_box->setGeometry(QRect(150, 40, 131, 22));

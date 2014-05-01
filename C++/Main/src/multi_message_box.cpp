@@ -46,5 +46,5 @@ void multi_message_box::set_message(Message message, int num_messages) {
 
 	QString text = QString::fromStdString(message.text_).replace(Gui::url_regex, "<a href=\"\\1\">\\1</a>");
 	ui->message_text_box->setText(text);
-	ui->sender_timestamp_lable->setText(QString::fromStdString("from " + message.sender_ + " at " + message.timestamp_));
+	ui->sender_timestamp_lable->setText(QString::fromStdString("")); //"from " + message.sender_ + " at " + message.timestamp_));
 }

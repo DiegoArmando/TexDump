@@ -86,12 +86,13 @@ void Manager::load_user_settings() {
 	
 	
 	log_messages = true;
+
 	if (!settings.contains("username")) {
 		create_default_settings();
 	}
 	else {
 
-		login(settings.value("username").toString().toStdString(),
+		Client::getInstance()->login(settings.value("username").toString().toStdString(),
 			settings.value("password").toString().toStdString(),
 			settings.value("deviceName").toString().toStdString());
 
@@ -128,6 +129,7 @@ bool Manager::login(std::string username, std::string password, std::string devi
 	settings.setValue("username", QString(username.c_str()));
 	settings.setValue("password", QString(password.c_str()));
 	settings.setValue("deviceName", QString(deviceName.c_str()));
+	settings.sync();
 	return true;
 }
 
@@ -145,6 +147,11 @@ bool Manager::createUser(std::string username, std::string password, std::string
 	settings.setValue("password", QString(password.c_str()));
 	settings.setValue("deviceName", QString(deviceName.c_str()));
 	return true;
+}
+
+std::string Manager::get_computer_name() {
+	QSettings settings("TexTeam", "TexDump");
+	return settings.value("deviceName").toString().toStdString();
 }
 
 QStringList Manager::get_connected_computers() {

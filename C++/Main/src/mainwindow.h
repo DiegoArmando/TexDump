@@ -26,6 +26,7 @@ public:
 
     explicit MainWindow(QWidget *parent = 0);
 	void set_combo_box(QStringList list);
+	void set_computer_name(std::string name);
 	std::string get_destination();
     ~MainWindow();
 

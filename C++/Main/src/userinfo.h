@@ -2,6 +2,8 @@
 #define USERINFO_H
 
 #include <QWidget>
+#include <qvalidator>
+#include "qregexp.h"
 
 namespace Ui {
 class userinfo;
@@ -22,6 +24,8 @@ private slots:
 
 private:
     Ui::userinfo *ui;
+	QRegExpValidator* val;
+	QRegExp regex;
 };
 
 #endif // USERINFO_H

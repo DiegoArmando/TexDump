@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>291</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,10 +43,10 @@
    <widget class="QLabel" name="your_ip_lable">
     <property name="geometry">
      <rect>
-      <x>15</x>
-      <y>10</y>
+      <x>20</x>
+      <y>9</y>
       <width>271</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -66,9 +66,9 @@
    <widget class="QLabel" name="destination_ip_lable">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>40</y>
-      <width>121</width>
+      <width>101</width>
       <height>20</height>
      </rect>
     </property>

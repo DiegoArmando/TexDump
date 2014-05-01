@@ -37,6 +37,8 @@ public:
 	void open_login_window();
 	QStringList get_connected_computers();
 
+	std::string get_computer_name();
+
 signals:
 	void new_message_recived();
 

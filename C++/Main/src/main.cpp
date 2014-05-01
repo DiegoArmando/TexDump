@@ -17,13 +17,15 @@ int main(int argc, char *argv[])
 {
 	Q_INIT_RESOURCE(textdumpicons);
 
+
+
+	Client* client = Client::getInstance();
+	client->init();
+
 	QApplication qapp(argc, argv);
 	Gui gui;
 	Manager::getInstance()->set_gui(&gui);
 	QApplication::setQuitOnLastWindowClosed(false);
-
-	Client* client = Client::getInstance();
-	client->init();
 
 	hot_key_listener* hotkey = hot_key_listener::getInstance();
 

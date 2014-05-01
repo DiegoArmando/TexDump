@@ -33,10 +33,10 @@ public:
     {
         if (single_message_box->objectName().isEmpty())
             single_message_box->setObjectName(QStringLiteral("single_message_box"));
-        single_message_box->resize(400, 300);
+        single_message_box->resize(355, 300);
         sender_timestam_lable = new QLabel(single_message_box);
         sender_timestam_lable->setObjectName(QStringLiteral("sender_timestam_lable"));
-        sender_timestam_lable->setGeometry(QRect(60, 20, 271, 16));
+        sender_timestam_lable->setGeometry(QRect(40, 10, 291, 31));
         message_text_box = new QTextBrowser(single_message_box);
         message_text_box->setObjectName(QStringLiteral("message_text_box"));
         message_text_box->setGeometry(QRect(50, 40, 256, 192));

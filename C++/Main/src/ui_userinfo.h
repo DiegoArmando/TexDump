@@ -39,7 +39,7 @@ public:
     {
         if (userinfo->objectName().isEmpty())
             userinfo->setObjectName(QStringLiteral("userinfo"));
-        userinfo->resize(291, 262);
+        userinfo->resize(291, 264);
         label = new QLabel(userinfo);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(30, 20, 46, 13));
