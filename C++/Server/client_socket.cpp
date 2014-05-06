@@ -50,10 +50,10 @@ std::string client_socket::getComputerName()
         std::string query = "SELECT computer_name FROM computers WHERE computer_id=";
         query+=id;
         query+=";";
-        if(mysql_query(connect,query.c_str()))//if query succeeds
+        mysql_query(connect,query.c_str());
+        result = mysql_store_result(connect);
+        if(*mysql_error(connect)=='\0' && (row = mysql_fetch_row(result))!=NULL)//if query succeeds
         {
-            result = mysql_store_result(connect);
-            row = mysql_fetch_row(result);
             return row[0];
         }       
     }
@@ -70,11 +70,10 @@ std::string client_socket::getUsername()
         std::string query = "select user_name from user_info where user_id=";
         query+=getUserID();
         query+=";";
-        if(mysql_query(connect,query.c_str()))//if query succeed
+        mysql_query(connect,query.c_str()); 
+        result = mysql_store_result(connect);
+        if(*mysql_error(connect)=='\0' && (row = mysql_fetch_row(result))!=NULL )//if query succeed
         {
-            result = mysql_store_result(connect);
-            row = mysql_fetch_row(result);
-            //create and send message
             return row[0];
         }
     }
@@ -90,10 +89,10 @@ std::string client_socket::getUserID()
         std::string query = "select user_id from computers where computer_id=";
         query+=id;
         query+=";";
-        if(mysql_query(connect,query.c_str()))//if query succeeds
+        mysql_query(connect,query.c_str());
+        result = mysql_store_result(connect);
+        if(*mysql_error(connect)=='\0' && (row = mysql_fetch_row(result)) != NULL)//if query succeeds
         {
-            result = mysql_store_result(connect);
-            row = mysql_fetch_row(result);
             return row[0];
         }
     }
@@ -107,12 +106,12 @@ std::string client_socket::getUserID(const char * username, const char* password
     std::ostringstream s;
     s << "select user_id from user_info where user_name='" << username << "' and password='"<<password<<"';";
     std::string query(s.str());
-    if(mysql_query(connect,query.c_str()))
-    {
-        result = mysql_store_result(connect);
-        std::string userID;
+    mysql_query(connect,query.c_str());   
+    result = mysql_store_result(connect);
+    std::string userID;
 
-        row = mysql_fetch_row(result);
+    if(*mysql_error(connect)=='\0' && (row = mysql_fetch_row(result)) != NULL)
+    {        
         userID = row[0];
         return userID;
     }
@@ -128,10 +127,10 @@ void client_socket::sendToDestination(std::string destinationName, std::string m
         std::ostringstream s;
         s << "select computer_id from computers where user_id=" << getUserID() <<" and computer_name='"<<destinationName<<"';";
         std::string query(s.str());
-        if(mysql_query(connect,query.c_str()))//if query succeeds
+        mysql_query(connect,query.c_str());
+        result = mysql_store_result(connect);
+        if(*mysql_error(connect)=='\0' && (row = mysql_fetch_row(result))!=NULL)//if query succeeds
         {
-           result = mysql_store_result(connect);
-           row = mysql_fetch_row(result);
            std::ostringstream m;
            m << "INSERT INTO messages (timestamp,send_computer_id,recieve_computer_id,message) VALUES ('"<< currentDateTime() << "','"<<id<< "','"<<row[0]<< "','"<<message<< "');";
            std::string query2(m.str());
@@ -173,10 +172,10 @@ std::string client_socket::getComputerID(std::string userID,std::string computer
     std::ostringstream s;
     s << "select computer_id from computers where user_id=" << userID << " and computer_name='"<<computerName<<"';";
     std::string query(s.str());
-    if(mysql_query(connect,query.c_str()))
+    mysql_query(connect,query.c_str());
+    result = mysql_store_result(connect);
+    if(*mysql_error(connect)=='\0' && (row = mysql_fetch_row(result))!=NULL)
     {
-        result = mysql_store_result(connect);
-        row = mysql_fetch_row(result);
         return row[0];
     } 
     return "";
@@ -237,7 +236,7 @@ void client_socket::login(const char * username,const char * password,const char
         send(socketID,error.c_str(),error.length(),0);
         return;
     }
-
+    printf("USER='%s',id='%s'\n",userID.c_str(),id.c_str());
     id = getComputerID(userID,compName);//try to set global variable for computer_id
     if(id.empty())//if computer not registered
     {  
@@ -265,9 +264,10 @@ void * client_socket::client_thread()
     char* recvbuf =new char[512];
     while(1)
     {
+        memset(recvbuf, 0, sizeof(recvbuf));//clear buffer
         iResult = recv(socketID,recvbuf,512,0);//wait for input
         
-        /*Log recieved message */
+        /*Log received message */
         std::ofstream log("log.txt",std::ios::app);
         log << currentDateTime()<<": Received text from ip="<<clientIP<<"  name='"<<getComputerName()<<"'\n   >> "<<recvbuf<<"\n";
         
