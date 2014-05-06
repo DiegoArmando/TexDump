@@ -16,6 +16,7 @@ userinfo::userinfo(QWidget *parent) :
 
 
 	ui->password_feild->setValidator(val);
+	ui->password_feild->setEchoMode(QLineEdit::Password);
 	ui->computer_feild->setValidator(val);
 	ui->username_field->setValidator(val);
 	ui->email_feild->setValidator(val);
